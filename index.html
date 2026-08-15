@@ -93,6 +93,7 @@
     </button>
 
     <!-- Save / Export HTML Button -->
+    
     <button id="saveHtmlBtn" onclick="downloadUpdatedHTML()" class="hidden p-2.5 bg-brand-orange hover:bg-orange-500 text-slate-950 font-bold rounded-xl transition shadow" title="Descargar HTML Actualizado">
         <i class="fa-solid fa-floppy-disk text-sm"></i>
     </button>
@@ -105,13 +106,13 @@
             </div>
         </div>
 
-        <!-- Mobile Search Bar -->
-        <div class="md:hidden px-4 pb-3">
-            <div class="relative w-full">
-                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                <input type="text" oninput="handleSearch(this.value)" placeholder="Buscar productos o SKU..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-100 placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-orange">
-            </div>
-        </div>
+ <!-- Mobile Search Bar -->
+<div class="md:hidden px-4 pb-3">
+    <div class="relative w-full">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+        <input type="text" oninput="handleSearch(this.value)" placeholder="Buscar productos o SKU..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-800 text-xs text-slate-100 placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-orange">
+    </div>
+</div>
     </header>
 
     <!-- HERO BANNER (Fully Editable Text & Background) -->
