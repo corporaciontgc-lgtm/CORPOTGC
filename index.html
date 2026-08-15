@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es" class="h-full bg-slate-50">
 <html lang="es" class="h-full bg-slate-50"><head>
@@ -66,32 +67,35 @@
 
             <!-- Action Controls -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Edit Mode Toggle -->
-                <!-- Edit Mode Toggle -->
-<button id="toggleEditBtn" onclick="toggleEditMode()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition border border-slate-700">
-    <i class="fa-solid fa-pen-to-square"></i>
-    <span id="editBtnLabel" class="hidden lg:inline">Modo Edición: OFF</span>
-</button>
-                <!-- Add Product Button (Hidden when editMode is OFF) -->
-                <button id="addProductBtn" onclick="openAddProductModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-2 rounded-xl text-xs items-center gap-1.5 transition shadow hidden">
-                    <i class="fa-solid fa-plus"></i>
-                    <span class="hidden sm:inline">Nuevo Producto</span>
-                </button>
+ <!-- Action Controls -->
+<div class="flex items-center gap-2 sm:gap-3">
+    <!-- Edit Mode Toggle -->
+    <button id="toggleEditBtn" onclick="toggleEditMode()" class="hidden bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-2 transition border border-slate-700">
+        <i class="fa-solid fa-pen-to-square"></i>
+        <span id="editBtnLabel" class="hidden lg:inline">Modo Edición: OFF</span>
+    </button>
 
-                <!-- Manage Categories Button (Hidden when editMode is OFF) -->
-                <button id="manageCatBtn" onclick="openCategoryModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3 py-2 rounded-xl text-xs items-center gap-1.5 transition border border-slate-700 hidden">
-                    <i class="fa-solid fa-tags"></i>
-                   <!-- Settings Gear -->
-                </button><button id="settingsBtn" onclick="openSettingsModal()" class="p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition border border-slate-700" title="Ajustes Generales de la Empresa">
-                 <i class="fa-solid fa-gears text-sm"></i>
-                    </button>
+    <!-- Add Product Button -->
+    <button id="addProductBtn" onclick="openAddProductModal()" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-2 rounded-xl text-xs items-center gap-1.5 transition shadow">
+        <i class="fa-solid fa-plus"></i>
+        <span class="hidden sm:inline">Nuevo Producto</span>
+    </button>
 
-            <!-- Save / Export HTML Button -->
-                <button id="saveHtmlBtn" onclick="downloadUpdatedHTML()" class="p-2.5 bg-brand-orange hover:bg-orange-500 text-slate-950 font-bold rounded-xl transition shadow" title="Descargar HTML Actualizado">
-                        <i class="fa-solid fa-floppy-disk text-sm"></i>
-                    </button>
-                
+    <!-- Manage Categories Button -->
+    <button id="manageCatBtn" onclick="openCategoryModal()" class="hidden bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold px-3 py-2 rounded-xl text-xs items-center gap-1.5 transition border border-slate-700">
+        <i class="fa-solid fa-tags"></i>
+        <span class="hidden sm:inline">Categorías</span>
+    </button>
 
+    <!-- Settings Gear -->
+    <button id="settingsBtn" onclick="openSettingsModal()" class="hidden p-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition border border-slate-700" title="Ajustes Generales de la Empresa">
+        <i class="fa-solid fa-gears text-sm"></i>
+    </button>
+
+    <!-- Save / Export HTML Button -->
+    <button id="saveHtmlBtn" onclick="downloadUpdatedHTML()" class="hidden p-2.5 bg-brand-orange hover:bg-orange-500 text-slate-950 font-bold rounded-xl transition shadow" title="Descargar HTML Actualizado">
+        <i class="fa-solid fa-floppy-disk text-sm"></i>
+    </button>
                 <!-- Cart / Quote Drawer Button -->
                 <button onclick="toggleCartDrawer()" class="relative bg-brand-orange hover:bg-orange-500 text-slate-950 font-black px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-lg transition">
                     <i class="fa-solid fa-basket-shopping text-base"></i>
@@ -1818,6 +1822,21 @@ Amarillo</p>
             closeSettingsModal();
             showToast("Catálogo restablecido a valores iniciales.");
         }
+// Mostrar botones de administración solo si la URL incluye ?admin=true
+document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAdmin = urlParams.get('admin') === 'true';
+
+    if (isAdmin) {
+        const editBtn = document.getElementById('toggleEditBtn');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const saveHtmlBtn = document.getElementById('saveHtmlBtn');
+
+        if (editBtn) editBtn.classList.remove('hidden');
+        if (settingsBtn) settingsBtn.classList.remove('hidden');
+        if (saveHtmlBtn) saveHtmlBtn.classList.remove('hidden');
+    }
+});
 // Mostrar botones de administración solo si la URL incluye ?admin=true
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
